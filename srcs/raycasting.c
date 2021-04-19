@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfranco- <nfranco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:51:29 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/17 21:05:56 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:35:41 by nfranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void        ft_render_3d_rays(t_vars *strct, double ray_angle)
     distance_proj_plane = (strct->window_width / 2)
         / tan(strct->player.fov_angle / 2);
     //projected wall height
-    wall_strip_height = (strct->tile_Y / (strct->rays.distance
+    wall_strip_height = (strct->tile_y / (strct->rays.distance
         * cos(ray_angle - strct->player.rotation_angle)))
         * distance_proj_plane;
     wall_top_pixel = (strct->window_height / 2) - (wall_strip_height / 2);
@@ -57,18 +57,18 @@ void        ft_render_3d_rays(t_vars *strct, double ray_angle)
     wall_bottom_pixel = (wall_bottom_pixel >= strct->window_height)
         ? strct->window_height - 1 : wall_bottom_pixel;
     i = ft_which_texture(strct, ray_angle);
-    strct->color = strct->RGB_ceiling;
+    strct->color = strct->rgb_ceiling;
     ft_draw_line(strct, strct->rays.column_id,
         0,
         strct->rays.column_id,
         wall_top_pixel);
     // strct->color = 0xCBF997;
-    ft_draw_texture(strct, wall_top_pixel, wall_bottom_pixel, wall_strip_height, i);
+    ft_drtex(strct, wall_top_pixel, wall_bottom_pixel, wall_strip_height, i);
     // ft_draw_line(strct, strct->rays.column_id,
     //     wall_top_pixel,
     //     strct->rays.column_id,
     //     wall_bottom_pixel);
-    strct->color = strct->RGB_floor;
+    strct->color = strct->rgb_floor;
     ft_draw_line(strct, strct->rays.column_id,
         wall_bottom_pixel,
         strct->rays.column_id,
@@ -94,16 +94,16 @@ void        ft_horizontal_check(t_vars *strct, double ray_angle)
     //////////////////////////////////////////////
 
     //find the y-coordinate of the closest horizontal grid intersection
-    yintercept = (floor(strct->player.y / strct->tile_Y)) * strct->tile_Y;
-    yintercept += strct->rays.is_facing_down ? strct->tile_Y : 0;
+    yintercept = (floor(strct->player.y / strct->tile_y)) * strct->tile_y;
+    yintercept += strct->rays.is_facing_down ? strct->tile_y : 0;
     //find the x-coordinate of the closes horizontal grid intersection
     xintercept = strct->player.x + ((yintercept - strct->player.y) / tan(ray_angle));
 
     //calculate increment xstep and ystep
-    ystep = strct->tile_Y;
+    ystep = strct->tile_y;
     ystep *= strct->rays.is_facing_up ? -1 : 1;
     
-    xstep = strct->tile_Y / tan(ray_angle);
+    xstep = strct->tile_y / tan(ray_angle);
     xstep *= (strct->rays.is_facing_left && xstep > 0) ? -1 : 1;
     xstep *= (strct->rays.is_facing_right && xstep < 0) ? -1 : 1;
 
@@ -154,16 +154,16 @@ void        ft_vertical_check(t_vars *strct, double ray_angle)
     
     found_vertical_wall_hit = 0;
     //find the x-coordinate of the closes vertical grid intersection
-    xintercept = (floor(strct->player.x / strct->tile_X)) * strct->tile_X;
-    xintercept += strct->rays.is_facing_right ? strct->tile_X : 0;
+    xintercept = (floor(strct->player.x / strct->tile_x)) * strct->tile_x;
+    xintercept += strct->rays.is_facing_right ? strct->tile_x : 0;
     //find the y-coordinate of the closes vertical grid intersection
     yintercept = strct->player.y + ((xintercept - strct->player.x) * tan(ray_angle));
 
     //calculate increment xstep and ystep
-    xstep = strct->tile_X;
+    xstep = strct->tile_x;
     xstep *= strct->rays.is_facing_left ? -1 : 1;
     
-    ystep = strct->tile_X * tan(ray_angle);
+    ystep = strct->tile_x * tan(ray_angle);
     ystep *= (strct->rays.is_facing_up && ystep > 0) ? -1 : 1;
     ystep *= (strct->rays.is_facing_down && ystep < 0) ? -1 : 1;
 

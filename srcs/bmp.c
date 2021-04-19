@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bmp.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nfranco- <nfranco-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/19 03:19:27 by nfranco-          #+#    #+#             */
+/*   Updated: 2021/04/19 20:42:16 by nfranco-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3D.h"
 #include <sys/stat.h>
 
@@ -26,7 +38,8 @@ static void			bmp_header(t_vars *strct, int fd)
 	int				filesize;
 
 	ft_bzero(&file, 54);
-	filesize = 54 + strct->window_height * strct->window_width * strct->bits_per_pixel / 8;
+	filesize = 54 + strct->window_height * strct->window_width
+				* strct->bits_per_pixel / 8;
 	file[0] = (unsigned char)('B');
 	file[1] = (unsigned char)('M');
 	little_endian_int(&file[2], filesize);

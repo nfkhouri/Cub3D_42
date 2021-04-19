@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfranco- <nfranco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:13:39 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/17 22:00:16 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:35:56 by nfranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ void			ft_render_single_sprite(t_vars *strct, int i)
 	distance_proj_plane = (strct->window_width / 2)
         / tan(strct->player.fov_angle / 2);
 	perp_distance = strct->sprite[i].distance * cos(strct->sprite[i].angle);
-	strct->sprite[i].height = (strct->tile_Y / perp_distance) * distance_proj_plane;
-	strct->sprite[i].width = (strct->tile_X / strct->sprite[i].distance) * distance_proj_plane;
+	strct->sprite[i].height = (strct->tile_y / perp_distance) * distance_proj_plane;
+	strct->sprite[i].width = (strct->tile_x / strct->sprite[i].distance) * distance_proj_plane;
 
 	strct->sprite[i].top_y = (strct->window_height / 2) - (strct->sprite[i].height / 2);
 	strct->sprite[i].top_y = (strct->sprite[i].top_y < 0) ? 0 : strct->sprite[i].top_y;

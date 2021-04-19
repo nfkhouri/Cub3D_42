@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   other_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfranco- <nfranco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:43:11 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/08 12:53:24 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:35:40 by nfranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int		create_rgb(int t, int r, int g, int b)
 
 void		rgb_maker(t_vars *strct)
 {
-	strct->RGB_ceiling = create_rgb(0, strct->R_ceiling, strct->G_ceiling, strct->B_ceiling);
-	strct->RGB_floor = create_rgb(0, strct->R_floor, strct->G_floor, strct->B_floor);
+	strct->rgb_ceiling = create_rgb(0, strct->r_ceiling, strct->g_ceiling, strct->b_ceiling);
+	strct->rgb_floor = create_rgb(0, strct->r_floor, strct->g_floor, strct->b_floor);
 }

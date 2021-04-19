@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_colors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfranco- <nfranco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 20:46:53 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/08 12:56:28 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:35:37 by nfranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,20 @@ int         ft_colors(char *str, t_vars *strct) {
         if (str[0] == 'C')
         {
             if (RGB == 0)
-                strct->R_ceiling = nbr;
+                strct->r_ceiling = nbr;
             else if (RGB == 1)
-                strct->G_ceiling = nbr;
+                strct->g_ceiling = nbr;
             else if (RGB == 2)
-                strct->B_ceiling = nbr;
+                strct->b_ceiling = nbr;
         }
         else
         {
             if (RGB == 0)
-                strct->R_floor = nbr;
+                strct->r_floor = nbr;
             else if (RGB == 1)
-                strct->G_floor = nbr;
+                strct->g_floor = nbr;
             else if (RGB == 2)
-                strct->B_floor = nbr;
+                strct->b_floor = nbr;
         }
         RGB++;
         free(number);

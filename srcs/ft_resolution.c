@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_resolution.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfranco- <nfranco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 21:04:17 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/12 19:33:21 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/19 16:40:14 by nfranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ int         ft_validate_numbers(char *width, char *height)
     return (0);
 }
 
+int		ft_free_h_w(char *width, char *height)
+{
+	free(height);
+    free(width);
+	return (-1);
+}
+
 int         ft_resolution(char *str, t_vars *strct)
 {
     int     screen_height;
@@ -68,22 +75,14 @@ int         ft_resolution(char *str, t_vars *strct)
     mlx_get_screen_size(strct->mlx, &screen_width, &screen_height);
     ft_split_numbers(str, i, &width, &height);
     if (ft_validate_numbers(width, height) == -1)
-    {
-        free(height);
-        free(width);
-        return (-1);
-    }
+        return (ft_free_h_w(width, height));
     strct->window_width = ft_atoi(width);
     strct->window_height = ft_atoi(height);
     if ((strct->window_width > screen_width)
         || (strct->window_height > screen_height))
         {
         ft_putendl_fd("Your window is too big!!!", 1);
-        free(height);
-        free(width);
-        return (-1);
+        return (ft_free_h_w(width, height));
     }
-    free(height);
-    free(width);
-    return (0);
+    return (ft_free_h_w(width, height) * 0);
 }

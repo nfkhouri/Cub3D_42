@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfranco- <nfranco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 21:46:50 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/17 17:40:06 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:35:50 by nfranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int         ft_has_wall_at(t_vars *strct, double x, double y)
         || y < 0 || y + strct->player.height > strct->window_height) {
             return (1);
         }
-    i = floor(x / strct->tile_X);
-    j = floor(y / strct->tile_Y);
+    i = floor(x / strct->tile_x);
+    j = floor(y / strct->tile_y);
     value = strct->map[j][i] == '1';
     return (value);
 }

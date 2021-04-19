@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfranco- <nfranco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 19:11:01 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/12 19:09:36 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:35:47 by nfranco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int         ft_render_map(t_vars *strct){
     {
         while (j < strct->map_width)
         {
-            tile_x_position = j * strct->tile_X;
-            tile_y_position = i * strct->tile_Y;
+            tile_x_position = j * strct->tile_x;
+            tile_y_position = i * strct->tile_y;
             if (strct->map[i][j] == '1' || strct->map[i][j] == 'X')
                 tile_color = 0x00000000;
             else if (strct->map[i][j] == '2')
@@ -35,8 +35,8 @@ int         ft_render_map(t_vars *strct){
                 tile_color = 0xFFFFFF;
             ft_square(strct, (tile_x_position * strct->minimap_scale),
                 (tile_y_position * strct->minimap_scale),
-                (strct->tile_Y * strct->minimap_scale),
-                (strct->tile_X * strct->minimap_scale), tile_color);
+                (strct->tile_y * strct->minimap_scale),
+                (strct->tile_x * strct->minimap_scale), tile_color);
             j++;
         }
         j = 0;
